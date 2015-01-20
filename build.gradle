@@ -1,0 +1,68 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'com.stehno.natives' version '0.2.1'
+}
+apply from: './libraries.gradle'
+
+group = 'com.thathanka'
+version = '0.1'
+
+ext {
+    authorName = "Travis Rasor"
+    authorEmail = "travis@thathanka.org"
+    expectedGradleVersion = '2.2'
+    javaLanguageLevel = '1.7'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile(libraries.groovy)
+    compile(libraries.slf4j)
+    compile(libraries.jsr305)
+    compile(libraries.lwjgl)
+
+    testCompile(libraries.junit)
+    testRuntime(libraries.logback)
+}
+
+natives {
+    def os = getOs()
+    println "Unpacking natives for $os to ./build/natives/$os"
+    jars = [ 
+        "lwjgl-platform-$lwjglVersion-natives-osx",
+        "lwjgl-platform-$lwjglVersion-natives-windows",
+        "lwjgl-platform-$lwjglVersion-natives-linux" ]
+    platforms = "$os"
+}
+
+run {
+    systemProperty 'java.library.path', file("build/natives/${getOs()}")
+}
+
+test {
+    maxHeapSize = "1024m"
+    jvmArgs '-XX:MaxPermSize=256m'
+    systemProperty 'java.library.path', file("build/natives/${getOs()}")
+}
+
+def getOs() {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        return 'win'
+    }
+    if (Os.isFamily(Os.FAMILY_MAC)) {
+        return 'osx'
+    }
+    if (Os.isFamily(Os.FAMILY_UNIX))
+        return 'linux' //this is not really all that correct
+    throw new GradleException('Your OS does not seem to be supported')
+}
+
+task checkOs  {
+  println "Operating System: ${getOs()}"
+}
