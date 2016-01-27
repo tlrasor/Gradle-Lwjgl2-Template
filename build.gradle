@@ -42,7 +42,7 @@ natives {
 }
 
 run {
-    mainClassName = 'org.thathanka.lwgl2.HellowWorld'
+    mainClassName = 'org.thathanka.lwgl2.HelloWorld'
     systemProperty 'java.library.path', file("build/natives/${getOs()}")
 }
 
