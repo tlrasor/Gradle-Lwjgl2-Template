@@ -5,13 +5,13 @@ Provides a standard gradle template using cjstehno's gradle-natives plugin (http
 
 ## Installation
 Clone this repository into your new project's directory
-```
+```bash
 git clone https://github.com/tlrasor/Gradle-Lwjgl2-Template.git yourProjectDirectory
 ```
 Edit build.gradle for your group, version, and author details
 ```groovy
-group = 'com.thathanka'
-version = '0.1'
+group = 'org.thathanka'
+version = '0.1.1'
 
 ext {
     authorName = "Travis Rasor"

@@ -1,13 +1,13 @@
 
 ext {
     //versions
-    groovyVersion = "2.3.8"
+    groovyVersion = "2.4.5"
     junitVersion = "4.12"
     slf4jVersion = "1.7.7"
     guavaVersion =  "17.0"
     jsr305Version = "2.0.3"
     logbackVersion = "1.1.2"
-    lwjglVersion = "2.9.2"
+    lwjglVersion = "2.9.3"
 
     libraries = [
             groovy: "org.codehaus.groovy:groovy-all:$groovyVersion",
