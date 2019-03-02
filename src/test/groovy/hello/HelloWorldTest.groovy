@@ -3,7 +3,7 @@ package hello
 import groovy.util.logging.Slf4j
 import org.junit.Test
 import org.lwjgl.opengl.Display
-import org.thathanka.lglw2.HelloWorld
+import org.thathanka.lwjgl2.HelloWorld
 
 @Slf4j
 class HelloWorldTest {
