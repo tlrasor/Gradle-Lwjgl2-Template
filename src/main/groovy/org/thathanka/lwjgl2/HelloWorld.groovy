@@ -1,4 +1,4 @@
-package org.thathanka.lglw2
+package org.thathanka.lwjgl2
 
 import groovy.util.logging.Slf4j
 import org.lwjgl.opengl.Display
